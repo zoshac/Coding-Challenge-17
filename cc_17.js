@@ -78,4 +78,30 @@ salesRep.getClientTotal("Nicholas");
 salesRep.getClientTotal("Chris"); 
 
 
-// Task 3 
+// Task 3 Vip Customer 
+
+//creating VIP customer
+class VIPcustomer extends Customer {
+    constructor(name, email, vipLevel) {
+        super(name, email);
+        this.vipLevel = vipLevel
+        console.log(`VIP CUSTOMER: ${this.name} (${this.vipLevel})`);
+    }
+//adding loyalty bonus
+getTotalSpent() {
+    const baseTotal = this.purchaseHistory.reduce((sum, amount) => sum + amount, 0);
+    const bonus = baseTotal * 0.10;
+    const totalWithBonus = baseTotal + bonus; 
+
+    console.log(`${this.name} (${this.vipLevel}) total with 10% bonus: $${totalWithBonus.toFixed(2)}`);
+    return totalWithBonus;
+}
+}
+
+//Testing Testing 
+const vip = new VIPCustomer("Nicholas", "nicholaspreston@outlook.com", "Platinum");
+vip.addPurchase(100);
+vip.addPurchase(50);
+vip.getTotalSpent();  
+
+
